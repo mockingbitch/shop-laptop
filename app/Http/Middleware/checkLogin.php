@@ -19,7 +19,7 @@ class CheckLogin
         if (Auth::guard('users')->check()) {
             return $next($request);
         } else {
-            return redirect("admin/dangnhap");
+            return redirect("/dangnhap");
         }
     }
 }
