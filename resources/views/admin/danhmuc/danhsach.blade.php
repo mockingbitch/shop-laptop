@@ -4,8 +4,11 @@
     <div class="card my-4">
       <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
         <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-          <h6 class="text-white text-capitalize ps-3">Authors table</h6>
+          <h6 class="text-white text-capitalize ps-3">Danh sách danh mục <button class="btn btn-light" style="float: right"><a href="{{route('them.danhmuc')}}">Thêm mới</a></button></h6>
           <span style="color: green">{{$msg ?? ''}}</span>
+        </div>
+        <div class="button-add">
+          
         </div>
       </div>
       <div class="card-body px-0 pb-2">
@@ -41,7 +44,7 @@
                     @endif
                 </td>
                 <td class="align-middle">
-                  <a href="{{route('sua.danhmuc', ['id' => $danhmuc->id])}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                  <a href="{{route('sua.danhmuc', ['id' => $danhmuc->id])}}" class="text-secondary font-weight-bold text-xs mx-3" data-toggle="tooltip" data-original-title="Edit user">
                     Sửa
                   </a>
                   <a onclick="return confirm('Xoá?')" href="{{route('xoa.danhmuc', ['id' => $danhmuc->id])}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">

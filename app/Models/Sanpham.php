@@ -27,4 +27,14 @@ class Sanpham extends Model
         'danhmuc_id',
         'thuonghieu_id',
     ];
+
+    public function danhmuc()
+    {
+        return $this->belongsTo(Danhmuc::class, 'danhmuc_id');
+    }
+
+    public function thuonghieu()
+    {
+        return $this->belongsTo(Thuonghieu::class, 'thuonghieu_id');
+    }
 }

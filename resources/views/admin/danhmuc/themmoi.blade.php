@@ -1,13 +1,13 @@
 @extends('admin.layout')
 @section('content')
 <style>
-    input {
-        border: 1px solid black !important;
+    .form-control {
+        border: 1px solid #d2d6da !important;
     }
 </style>
 <div class="col-12">
     <div class="card my-4">
-        {{$msg ?? ''}}
+        <span style="color: green; font-weight: bold">{{$msg ?? ''}}</span>
         <form id="quickForm" action="" method="POST">
             @csrf
             <div class="card-body">
@@ -38,6 +38,7 @@
             <!-- /.card-body -->
             <div class="card-footer">
                 <button type="submit" name="add" class="btn btn-primary">Thêm</button>
+                <button type="button" name="back" class="btn btn-danger"><a href="{{route('danhsach.danhmuc')}}">Trở về</a></button>
             </div>
         </form>
     </div>

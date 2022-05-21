@@ -1,11 +1,13 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Admin\DanhmucController;
 use App\Http\Controllers\Admin\ThuonghieuController;
-
+use App\Http\Controllers\Trangchu\TrangchuController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SanphamController;
 
 
 /*
@@ -24,7 +26,7 @@ Route::post('/dangnhap', [AuthController::class, 'login']);
 Route::middleware(['checklogin'])->group(function(){
     Route::prefix('admin')->group(function(){
         Route::get('/dangxuat', [AuthController::class, 'logout'])->name('dangxuat');
-        Route::get('/dashboard', [UserController::class, 'index'])->name('trang.dashboard');
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('trang.dashboard');
 
         //Danh muc
         Route::prefix('danhmuc')->group(function(){
@@ -45,5 +47,17 @@ Route::middleware(['checklogin'])->group(function(){
             Route::post('/sua/{id}', [ThuonghieuController::class, 'sua']);
             Route::get('/xoa/{id}', [ThuonghieuController::class, 'xoa'])->name('xoa.thuonghieu');
         });
+
+        //Sản phẩm
+        Route::prefix('sanpham')->group(function(){
+            Route::get('/danhsach', [SanphamController::class, 'danhsach'])->name('danhsach.sanpham');
+            Route::get('/themmoi', [SanphamController::class, 'viewThem'])->name('them.sanpham');
+            Route::post('/themmoi', [SanphamController::class, 'them']);
+            Route::get('/sua/{id}', [SanphamController::class, 'show'])->name('sua.sanpham');
+            Route::post('/sua/{id}', [SanphamController::class, 'sua']);
+            Route::get('/xoa/{id}', [SanphamController::class, 'xoa'])->name('xoa.sanpham');
+        });
     });
 });
+
+Route::get('/', [TrangchuController::class, 'trangchu'])->name('trangchu');

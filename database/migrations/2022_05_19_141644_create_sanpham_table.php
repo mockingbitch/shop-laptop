@@ -19,7 +19,7 @@ class CreateSanphamTable extends Migration
             $table->string('mota');
             $table->text('chitiet');
             $table->bigInteger('gia');
-            $table->string('hinhanh');
+            $table->string('hinhanh')->nullable();
             $table->string('soluong');
             $table->unsignedBigInteger('danhmuc_id');
             $table->foreign('danhmuc_id')->references('id')->on('danhmuc')->onDelete('cascade');
